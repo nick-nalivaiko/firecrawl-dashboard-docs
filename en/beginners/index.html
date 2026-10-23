@@ -5,14 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Firecrawl for beginners: features, Tavily/Serper/Exa comparison, AI, practical workflows, and safety boundaries." />
     <title>Firecrawl for beginners · Firecrawl Control Plane</title>
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../../styles.css" />
     <script src="../../docs.js" defer></script>
   </head>
   <body>
-    <header class="site-header"><div class="shell"><a class="brand" href="../" aria-label="Firecrawl Control Plane documentation"><span class="brand-mark" aria-hidden="true">◆</span><span>Firecrawl Control Plane</span></a><div class="header-actions"><nav class="mode-switch" aria-label="Documentation mode"><a class="mode-link" href="../">User guide</a><a class="mode-link" aria-current="page" href="./">Beginner guide</a></nav><a class="language-link" href="../../ru/beginners/" lang="ru">Русский</a></div></div></header>
+    <header class="site-header"><div class="shell">
+      <a class="brand" href="../" aria-label="Firecrawl Control Plane documentation"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4.5 19.5 12 12 19.5 4.5 12 12 4.5Z" fill="currentColor" /></svg></span><span class="brand-copy"><strong>Firecrawl</strong><span>Control Plane</span></span></a>
+      <div class="header-actions"><nav class="mode-switch" aria-label="Documentation mode"><a class="mode-link" href="../">User guide</a><a class="mode-link" aria-current="page" href="./">Beginner guide</a></nav><a class="language-link" href="../../ru/beginners/" lang="ru">Русский</a></div>
+      <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-navigation"><span class="menu-toggle-label">Menu</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path class="menu-icon-open" d="M4 7h16M4 12h16M4 17h16" /><path class="menu-icon-close" d="m6 6 12 12M18 6 6 18" /></svg></button>
+    </div></header>
+
+    <div class="menu-backdrop" data-menu-backdrop aria-hidden="true"></div>
+    <nav class="mobile-navigation" id="mobile-navigation" data-mobile-menu aria-label="Mobile navigation" aria-hidden="true" inert>
+      <div class="mobile-nav-head"><p class="mobile-nav-title">Navigation</p><span>Beginner guide</span></div>
+      <div class="mobile-nav-section"><p class="mobile-nav-label">Reading mode</p><div class="mobile-mode-switch"><a class="mobile-mode-link" href="../">User guide</a><a class="mobile-mode-link" aria-current="page" href="./">Beginner guide</a></div></div>
+      <div class="mobile-nav-section"><p class="mobile-nav-label">Language</p><a class="mobile-language-link" href="../../ru/beginners/" lang="ru"><span>Язык</span>Русский</a></div>
+      <div class="mobile-nav-section">
+        <p class="mobile-nav-label">On this page</p>
+        <ul class="mobile-nav-list"><li><a class="mobile-nav-link is-active" href="#idea">What Firecrawl is</a></li><li><a class="mobile-nav-link" href="#functions">Features and examples</a></li><li><a class="mobile-nav-link" href="#comparison">Tavily, Serper, and Exa</a></li><li><a class="mobile-nav-link" href="#ai">How AI helps</a></li><li><a class="mobile-nav-link" href="#power-cases">Five high-value workflows</a></li><li><a class="mobile-nav-link" href="#poor-fit">When not to use it</a></li><li><a class="mobile-nav-link" href="#prohibited">When use is prohibited</a></li><li><a class="mobile-nav-link" href="#guardrails">Required guardrails</a></li><li><a class="mobile-nav-link" href="#start">Where to start</a></li></ul>
+      </div>
+      <div class="mobile-nav-section"><p class="mobile-nav-label">Useful links</p><ul class="mobile-nav-list"><li><a class="mobile-nav-link" href="https://firecrawl.tapurl.net/">Open dashboard</a></li></ul></div>
+    </nav>
 
     <div class="shell">
-      <button class="mobile-toc-button" type="button" data-toc-toggle aria-expanded="false" aria-controls="beginner-toc">Contents <span aria-hidden="true">⌄</span></button>
       <div class="docs-layout">
         <aside class="docs-sidebar" id="beginner-toc" data-toc><p class="toc-kicker">Beginner guide</p><nav aria-label="Page contents"><ul class="toc-list"><li><a class="toc-link is-active" href="#idea">What Firecrawl is</a></li><li><a class="toc-link" href="#functions">Features and examples</a></li><li><a class="toc-link" href="#comparison">Tavily, Serper, and Exa</a></li><li><a class="toc-link" href="#ai">How AI helps</a></li><li><a class="toc-link" href="#power-cases">Five high-value workflows</a></li><li><a class="toc-link" href="#poor-fit">When not to use it</a></li><li><a class="toc-link" href="#prohibited">When use is prohibited</a></li><li><a class="toc-link" href="#guardrails">Required guardrails</a></li><li><a class="toc-link" href="#start">Where to start</a></li></ul></nav><p class="toc-kicker">Other mode</p><nav aria-label="Additional links"><ul class="toc-list"><li><a class="toc-link" href="../">User guide</a></li><li><a class="toc-link" href="https://firecrawl.tapurl.net/">Open dashboard</a></li></ul></nav></aside>
 

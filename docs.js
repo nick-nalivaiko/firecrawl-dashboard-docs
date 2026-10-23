@@ -1,22 +1,69 @@
-const tocButton = document.querySelector('[data-toc-toggle]');
-const toc = document.querySelector('[data-toc]');
+const menuButton = document.querySelector('[data-menu-toggle]');
+const mobileMenu = document.querySelector('[data-mobile-menu]');
+const menuBackdrop = document.querySelector('[data-menu-backdrop]');
+const mobileViewport = window.matchMedia('(max-width: 860px)');
+const pageMain = document.querySelector('main');
+const pageFooter = document.querySelector('footer');
+const brandLink = document.querySelector('.brand');
 
-if (tocButton && toc) {
-  tocButton.addEventListener('click', () => {
-    const open = toc.classList.toggle('is-open');
-    tocButton.setAttribute('aria-expanded', String(open));
+const setMenuOpen = (open, restoreFocus = false) => {
+  if (!menuButton || !mobileMenu || !menuBackdrop) return;
+
+  const shouldOpen = open && mobileViewport.matches;
+  menuButton.setAttribute('aria-expanded', String(shouldOpen));
+  mobileMenu.setAttribute('aria-hidden', String(!shouldOpen));
+  mobileMenu.inert = !shouldOpen;
+  mobileMenu.classList.toggle('is-open', shouldOpen);
+  menuBackdrop.classList.toggle('is-open', shouldOpen);
+  document.body.classList.toggle('menu-open', shouldOpen);
+  if (pageMain) pageMain.inert = shouldOpen;
+  if (pageFooter) pageFooter.inert = shouldOpen;
+  if (brandLink) brandLink.inert = shouldOpen;
+
+  if (shouldOpen) {
+    mobileMenu.querySelector('a')?.focus();
+  } else if (restoreFocus) {
+    menuButton.focus();
+  }
+};
+
+if (menuButton && mobileMenu && menuBackdrop) {
+  menuButton.addEventListener('click', () => {
+    setMenuOpen(menuButton.getAttribute('aria-expanded') !== 'true');
   });
 
-  toc.addEventListener('click', event => {
-    if (event.target.closest('a') && window.matchMedia('(max-width: 760px)').matches) {
-      toc.classList.remove('is-open');
-      tocButton.setAttribute('aria-expanded', 'false');
+  menuBackdrop.addEventListener('click', () => setMenuOpen(false, true));
+
+  mobileMenu.addEventListener('click', event => {
+    if (event.target.closest('a')) setMenuOpen(false);
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') {
+      setMenuOpen(false, true);
     }
+
+    if (event.key === 'Tab' && menuButton.getAttribute('aria-expanded') === 'true') {
+      const focusable = [...mobileMenu.querySelectorAll('a[href]')];
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
+      }
+    }
+  });
+
+  mobileViewport.addEventListener('change', event => {
+    if (!event.matches) setMenuOpen(false);
   });
 }
 
-const tocLinks = [...document.querySelectorAll('.toc-link[href^="#"]')];
-const sections = tocLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+const tocLinks = [...document.querySelectorAll('.toc-link[href^="#"], .mobile-nav-link[href^="#"]')];
+const sections = [...new Set(tocLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean))];
 
 if ('IntersectionObserver' in window && sections.length) {
   const observer = new IntersectionObserver(entries => {

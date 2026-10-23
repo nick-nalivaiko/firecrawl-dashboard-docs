@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Практическая документация Firecrawl Control Plane: сбор данных, поиск, AI, проекты, безопасность и эксплуатация." />
     <title>Документация · Firecrawl Control Plane</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../styles.css" />
     <script src="../docs.js" defer></script>
   </head>
@@ -12,7 +13,8 @@
     <header class="site-header">
       <div class="shell">
         <a class="brand" href="./" aria-label="Документация Firecrawl Control Plane">
-          <span class="brand-mark" aria-hidden="true">◆</span><span>Firecrawl Control Plane</span>
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4.5 19.5 12 12 19.5 4.5 12 12 4.5Z" fill="currentColor" /></svg></span>
+          <span class="brand-copy"><strong>Firecrawl</strong><span>Control Plane</span></span>
         </a>
         <div class="header-actions">
           <nav class="mode-switch" aria-label="Режим документации">
@@ -21,13 +23,52 @@
           </nav>
           <a class="language-link" href="../en/" lang="en">English</a>
         </div>
+        <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-navigation">
+          <span class="menu-toggle-label">Меню</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+            <path class="menu-icon-open" d="M4 7h16M4 12h16M4 17h16" />
+            <path class="menu-icon-close" d="m6 6 12 12M18 6 6 18" />
+          </svg>
+        </button>
       </div>
     </header>
 
+    <div class="menu-backdrop" data-menu-backdrop aria-hidden="true"></div>
+    <nav class="mobile-navigation" id="mobile-navigation" data-mobile-menu aria-label="Мобильная навигация" aria-hidden="true" inert>
+      <div class="mobile-nav-head"><p class="mobile-nav-title">Навигация</p><span>Документация</span></div>
+      <div class="mobile-nav-section">
+        <p class="mobile-nav-label">Режим чтения</p>
+        <div class="mobile-mode-switch">
+          <a class="mobile-mode-link" aria-current="page" href="./">Для пользователей</a>
+          <a class="mobile-mode-link" href="./beginners/">Для начинающих</a>
+        </div>
+      </div>
+      <div class="mobile-nav-section">
+        <p class="mobile-nav-label">Язык</p>
+        <a class="mobile-language-link" href="../en/" lang="en"><span>Language</span>English</a>
+      </div>
+      <div class="mobile-nav-section">
+        <p class="mobile-nav-label">На этой странице</p>
+        <ul class="mobile-nav-list">
+          <li><a class="mobile-nav-link is-active" href="#overview">Обзор платформы</a></li>
+          <li><a class="mobile-nav-link" href="#projects">Проекты и ключи</a></li>
+          <li><a class="mobile-nav-link" href="#collection">Сбор данных</a></li>
+          <li><a class="mobile-nav-link" href="#search-ai">Поиск и AI</a></li>
+          <li><a class="mobile-nav-link" href="#automation">Автоматизация</a></li>
+          <li><a class="mobile-nav-link" href="#safety">Безопасная работа</a></li>
+          <li><a class="mobile-nav-link" href="#status">Состояние функций</a></li>
+        </ul>
+      </div>
+      <div class="mobile-nav-section">
+        <p class="mobile-nav-label">Полезные ссылки</p>
+        <ul class="mobile-nav-list">
+          <li><a class="mobile-nav-link" href="https://firecrawl.tapurl.net/">Открыть панель</a></li>
+          <li><a class="mobile-nav-link" href="https://docs.firecrawl.dev/">Документация Firecrawl</a></li>
+        </ul>
+      </div>
+    </nav>
+
     <div class="shell">
-      <button class="mobile-toc-button" type="button" data-toc-toggle aria-expanded="false" aria-controls="docs-toc">
-        Оглавление <span aria-hidden="true">⌄</span>
-      </button>
       <div class="docs-layout">
         <aside class="docs-sidebar" id="docs-toc" data-toc>
           <p class="toc-kicker">Руководство</p>

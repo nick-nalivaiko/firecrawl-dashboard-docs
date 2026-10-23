@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Firecrawl Control Plane — защищённая панель и gateway для self-hosted Firecrawl." />
+    <title>Firecrawl Control Plane — документация проекта</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="shell">
+        <a class="brand" href="./" aria-label="Главная Firecrawl Control Plane">
+          <span class="brand-mark" aria-hidden="true">◆</span>
+          <span>Firecrawl Control Plane</span>
+        </a>
+        <div class="header-actions">
+          <a class="language-link" href="../en/" lang="en">English</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="shell hero">
+        <div>
+          <p class="eyebrow">Self-hosted платформа сбора данных</p>
+          <h1>Firecrawl с панелью управления для реальных внутренних задач.</h1>
+          <p class="hero-copy">Защищённый Dashboard, API gateway с проектными ключами, учёт использования, операции и маршрутизация провайдеров вокруг отдельно версионируемого Firecrawl Core.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://firecrawl.tapurl.net/">Открыть панель</a>
+            <a class="button" href="#capabilities">Посмотреть возможности</a>
+          </div>
+        </div>
+        <aside class="status-card" aria-label="Статус проекта">
+          <span class="status-pill">Активная разработка</span>
+          <dl>
+            <div><dt>Интерфейс</dt><dd>RU / EN</dd></div>
+            <div><dt>Доступ</dt><dd>Панель владельца</dd></div>
+            <div><dt>Модель API</dt><dd>Проекты и ключи</dd></div>
+            <div><dt>Upstream</dt><dd>Обновляемая база</dd></div>
+          </dl>
+        </aside>
+      </section>
+
+      <section class="shell section" id="capabilities">
+        <div class="section-heading">
+          <p class="eyebrow">Текущие возможности</p>
+          <h2>Единое место для сбора данных, автоматизации и AI-сценариев.</h2>
+          <p>Проект уже вышел за рамки экрана мониторинга: он управляет доступом, распределяет нагрузку между внутренними проектами и открывает возможности Firecrawl через управляемый gateway.</p>
+        </div>
+        <div class="grid">
+          <article class="card"><span class="card-index">01</span><h3>Проекты и API-ключи</h3><p>Отдельные ключи, лимиты, статистика и история изменений для каждого внутреннего сервиса.</p></article>
+          <article class="card"><span class="card-index">02</span><h3>Инструменты сбора</h3><p>Scrape, Batch Scrape, Crawl, структурированный Extract, разбор документов, поиск и карта сайта.</p></article>
+          <article class="card"><span class="card-index">03</span><h3>Длительные задачи</h3><p>Состояние фоновой работы, диагностика ошибок, просмотр результатов и доступная отмена.</p></article>
+          <article class="card"><span class="card-index">04</span><h3>Автоматизация</h3><p>Мониторы, расписания, подписанные вебхуки, политика повторов и история доставки.</p></article>
+          <article class="card"><span class="card-index">05</span><h3>Маршрутизация моделей</h3><p>Поиск и проверка моделей Ollama или OpenAI-compatible с управляемым локальным и облачным резервом.</p></article>
+          <article class="card"><span class="card-index">06</span><h3>Состояние системы</h3><p>Readiness, очереди, отчёты использования, журнал изменений, сроки хранения и observability.</p></article>
+        </div>
+      </section>
+
+      <section class="shell section">
+        <div class="architecture">
+          <p class="eyebrow">Архитектура</p>
+          <h2>Собственная платформа отделена от upstream.</h2>
+          <p>Авторизация, проекты, политики gateway, usage и операционные данные находятся в отдельном platform layer. Firecrawl Core остаётся самостоятельным компонентом с зафиксированной версией, а обновления исходного Dashboard проходят через воспроизводимые Git-ветки обновления.</p>
+          <div class="architecture-flow" aria-label="Путь запроса">
+            <div class="architecture-node"><strong>Dashboard</strong><span>Работа владельца, управление проектами, отчёты и конфигурация.</span></div>
+            <div class="architecture-node"><strong>Managed gateway</strong><span>Проектная авторизация, лимиты, политики, учёт и безопасная маршрутизация.</span></div>
+            <div class="architecture-node"><strong>Firecrawl Core</strong><span>Версионируемый движок сбора с отдельной проверкой готовности.</span></div>
+            <div class="architecture-node"><strong>Операционные данные</strong><span>Метаданные PostgreSQL и временные артефакты с явными сроками хранения.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="shell section">
+        <div class="status-strip">
+          <div>
+            <p class="eyebrow">Предварительная документация</p>
+            <h2>Публичная документация развивается вместе с продуктом.</h2>
+            <p>Первая страница описывает стабильные границы проекта. Примеры API, сценарии функций и архитектурные материалы будут добавляться после прохождения runtime-проверок соответствующих маршрутов.</p>
+          </div>
+          <a class="button primary" href="https://firecrawl.tapurl.net/">Посмотреть продукт</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell">
+        <p class="footer-note">Firecrawl Control Plane · проект self-hosted инфраструктуры</p>
+        <p class="footer-note">Основано на Dashboard Lab · Firecrawl Core остаётся отдельным upstream-компонентом</p>
+      </div>
+    </footer>
+  </body>
+</html>

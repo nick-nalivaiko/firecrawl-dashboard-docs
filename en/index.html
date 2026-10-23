@@ -3,92 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Firecrawl Control Plane — a protected dashboard and gateway for self-hosted Firecrawl." />
-    <title>Firecrawl Control Plane — Project documentation</title>
+    <meta name="description" content="Practical Firecrawl Control Plane documentation: collection, search, AI, projects, safety, and operations." />
+    <title>Documentation · Firecrawl Control Plane</title>
     <link rel="stylesheet" href="../styles.css" />
+    <script src="../docs.js" defer></script>
   </head>
   <body>
-    <header class="site-header">
-      <div class="shell">
-        <a class="brand" href="./" aria-label="Firecrawl Control Plane home">
-          <span class="brand-mark" aria-hidden="true">◆</span>
-          <span>Firecrawl Control Plane</span>
-        </a>
-        <div class="header-actions">
-          <a class="language-link" href="../ru/" lang="ru">Русский</a>
-        </div>
-      </div>
-    </header>
+    <header class="site-header"><div class="shell">
+      <a class="brand" href="./" aria-label="Firecrawl Control Plane documentation"><span class="brand-mark" aria-hidden="true">◆</span><span>Firecrawl Control Plane</span></a>
+      <div class="header-actions"><nav class="mode-switch" aria-label="Documentation mode"><a class="mode-link" aria-current="page" href="./">User guide</a><a class="mode-link" href="./beginners/">Beginner guide</a></nav><a class="language-link" href="../ru/" lang="ru">Русский</a></div>
+    </div></header>
 
-    <main>
-      <section class="shell hero">
-        <div>
-          <p class="eyebrow">Self-hosted data collection platform</p>
-          <h1>Firecrawl with a control plane built for real internal workloads.</h1>
-          <p class="hero-copy">A protected dashboard, project-scoped API gateway, usage accounting, operations, and provider routing around a separately versioned Firecrawl Core.</p>
-          <div class="hero-actions">
-            <a class="button primary" href="https://firecrawl.tapurl.net/">Open dashboard</a>
-            <a class="button" href="#capabilities">Explore capabilities</a>
-          </div>
-        </div>
-        <aside class="status-card" aria-label="Project status">
-          <span class="status-pill">Active development</span>
-          <dl>
-            <div><dt>Interface</dt><dd>RU / EN</dd></div>
-            <div><dt>Access</dt><dd>Private owner panel</dd></div>
-            <div><dt>API model</dt><dd>Projects and keys</dd></div>
-            <div><dt>Upstream</dt><dd>Upgrade-compatible</dd></div>
-          </dl>
+    <div class="shell">
+      <button class="mobile-toc-button" type="button" data-toc-toggle aria-expanded="false" aria-controls="docs-toc">Contents <span aria-hidden="true">⌄</span></button>
+      <div class="docs-layout">
+        <aside class="docs-sidebar" id="docs-toc" data-toc>
+          <p class="toc-kicker">Guide</p><nav aria-label="Page contents"><ul class="toc-list">
+            <li><a class="toc-link is-active" href="#overview">Platform overview</a></li><li><a class="toc-link" href="#projects">Projects and keys</a></li><li><a class="toc-link" href="#collection">Data collection</a></li><li><a class="toc-link" href="#search-ai">Search and AI</a></li><li><a class="toc-link" href="#automation">Automation</a></li><li><a class="toc-link" href="#safety">Safe operation</a></li><li><a class="toc-link" href="#status">Capability status</a></li>
+          </ul></nav>
+          <p class="toc-kicker">Links</p><nav aria-label="Additional links"><ul class="toc-list"><li><a class="toc-link" href="./beginners/">Plain-language guide</a></li><li><a class="toc-link" href="https://firecrawl.tapurl.net/">Open dashboard</a></li><li><a class="toc-link" href="https://docs.firecrawl.dev/">Upstream Firecrawl Docs</a></li></ul></nav>
         </aside>
-      </section>
 
-      <section class="shell section" id="capabilities">
-        <div class="section-heading">
-          <p class="eyebrow">Current capabilities</p>
-          <h2>One place to operate collection, automation, and AI-assisted workflows.</h2>
-          <p>The project is already more than a monitoring screen: it controls access, attributes load to internal projects, and exposes Firecrawl workflows through a managed gateway.</p>
-        </div>
-        <div class="grid">
-          <article class="card"><span class="card-index">01</span><h3>Projects and API keys</h3><p>Separate credentials, quotas, usage, and audit history for every internal service.</p></article>
-          <article class="card"><span class="card-index">02</span><h3>Collection tools</h3><p>Scrape, batch scrape, crawl, structured extract, document parsing, search, and site maps.</p></article>
-          <article class="card"><span class="card-index">03</span><h3>Long-running jobs</h3><p>Track asynchronous work, inspect failures, review results, and cancel supported operations.</p></article>
-          <article class="card"><span class="card-index">04</span><h3>Automation</h3><p>Monitors, schedules, signed webhooks, retry policy, and delivery history for reliable integrations.</p></article>
-          <article class="card"><span class="card-index">05</span><h3>Provider routing</h3><p>Discover and test Ollama or OpenAI-compatible models with controlled local and cloud fallback.</p></article>
-          <article class="card"><span class="card-index">06</span><h3>Operations and health</h3><p>Readiness, queue state, usage reports, change history, retention, and observability hooks.</p></article>
-        </div>
-      </section>
+        <main class="docs-main">
+          <section class="docs-hero" id="overview"><div><p class="eyebrow">Practical guide</p><h1>How the platform works and where each function belongs.</h1><p class="hero-copy">Firecrawl turns web pages and documents into data that software and AI can use. Control Plane adds projects, keys, policies, operations, and observability around a separately versioned Firecrawl Core.</p><div class="hero-actions"><a class="button primary" href="https://firecrawl.tapurl.net/">Open dashboard</a><a class="button" href="./beginners/">Start with the plain-language guide</a></div></div><aside class="hero-note"><strong>The selection rule</strong><p>One known page: Scrape. A known list: Batch Scrape. A site section: Crawl. Discover pages first: Search or Map. Return defined fields: Extract/JSON.</p></aside></section>
 
-      <section class="shell section">
-        <div class="architecture">
-          <p class="eyebrow">Architecture</p>
-          <h2>Custom platform features stay isolated from upstream.</h2>
-          <p>Authentication, projects, gateway policy, usage, and operational storage live in a dedicated platform layer. Firecrawl Core remains a separate pinned component, while upstream Dashboard updates are reviewed through reproducible Git upgrade branches.</p>
-          <div class="architecture-flow" aria-label="Request path">
-            <div class="architecture-node"><strong>Dashboard</strong><span>Owner workflows, project controls, reporting, and configuration.</span></div>
-            <div class="architecture-node"><strong>Managed gateway</strong><span>Project authentication, limits, policy, accounting, and safe routing.</span></div>
-            <div class="architecture-node"><strong>Firecrawl Core</strong><span>Versioned collection engine with independently verified readiness.</span></div>
-            <div class="architecture-node"><strong>Operational data</strong><span>PostgreSQL metadata and short-lived artifacts with explicit retention.</span></div>
-          </div>
-        </div>
-      </section>
+          <section class="docs-section wide" id="projects"><div class="section-heading"><p class="eyebrow">Access boundary</p><h2>Projects and API keys</h2><p>Each calling service receives its own project and key, keeping limits, errors, operations, and usage attributable to the correct workload.</p></div><div class="mental-model" aria-label="Request path through the platform"><div class="mental-step"><span>01</span><strong>Project</strong><p>Defines workload ownership, limits, and AI policy.</p></div><div class="mental-step"><span>02</span><strong>Gateway</strong><p>Checks the key, route, and request policy.</p></div><div class="mental-step"><span>03</span><strong>Firecrawl Core</strong><p>Performs collection, search, or a background job.</p></div><div class="mental-step"><span>04</span><strong>Result</strong><p>Returns to the caller; large bodies are not stored in operational PostgreSQL.</p></div></div><div class="callout"><strong>Keep keys server-side</strong><p>Do not put administrative or upstream keys in frontend code, browser storage, URLs, or public examples. Applications should use project-scoped gateway keys.</p></div></section>
 
-      <section class="shell section">
-        <div class="status-strip">
-          <div>
-            <p class="eyebrow">Documentation preview</p>
-            <h2>Public documentation is growing with the product.</h2>
-            <p>This first portfolio page describes the stable product boundary. API recipes, feature walkthroughs, and architecture notes will be added as the corresponding runtime paths pass their verification gates.</p>
-          </div>
-          <a class="button primary" href="https://firecrawl.tapurl.net/">View the product</a>
-        </div>
-      </section>
-    </main>
+          <section class="docs-section wide" id="collection"><div class="section-heading"><p class="eyebrow">Data collection</p><h2>One source, a URL list, or a whole site</h2><p>These operations differ by input and traversal scope, rather than by a simple quality ranking.</p></div><div class="table-wrap"><table><thead><tr><th>Tool</th><th>Use when</th><th>Returns</th><th>Watch for</th></tr></thead><tbody>
+            <tr><td><strong>Scrape</strong>One page</td><td>You know the URL and need current content.</td><td>Markdown, HTML, links, screenshot, or JSON.</td><td>Dynamic sites may need waits, actions, or an enhanced proxy.</td></tr>
+            <tr><td><strong>Batch Scrape</strong>Page set</td><td>You have a finite list of independent URLs.</td><td>A result for each address.</td><td>This is a background job; inspect partial failures.</td></tr>
+            <tr><td><strong>Crawl</strong>Site section</td><td>You need to follow links from a starting page.</td><td>A collection of cleaned pages.</td><td>Always bound depth, page count, and domains.</td></tr>
+            <tr><td><strong>Map</strong>URL inventory</td><td>You need to understand site structure before fetching content.</td><td>Discovered URLs without full bodies.</td><td>Use it before a selective Crawl or Batch.</td></tr>
+            <tr><td><strong>Extract / JSON</strong>Structure</td><td>You need the same fields from different pages.</td><td>JSON conforming to a requested schema.</td><td>Uses AI; provider route, project policy, and schema validation matter.</td></tr>
+            <tr><td><strong>Parse</strong>Document</td><td>The source is a PDF, office file, or another upload.</td><td>Text or a structured representation.</td><td>Only process files you are allowed to handle.</td></tr>
+            <tr><td><strong>Browser / Interact</strong>Complex flow</td><td>Content appears after a permitted click, wait, or scroll.</td><td>Session output, screenshot, or content.</td><td>Requires a browser provider and strict limits.</td></tr>
+          </tbody></table></div></section>
 
-    <footer class="site-footer">
-      <div class="shell">
-        <p class="footer-note">Firecrawl Control Plane · self-hosted infrastructure project</p>
-        <p class="footer-note">Built on Dashboard Lab · Firecrawl Core remains a separate upstream component</p>
+          <section class="docs-section wide" id="search-ai"><div class="section-heading"><p class="eyebrow">Search and AI</p><h2>Discover sources, then work with their meaning</h2><p>Search answers “where is the information?” and can retrieve the content of matching pages. AI functions then map content to a schema, summarize it, or plan a bounded multi-step task.</p></div><div class="ai-grid"><article class="info-card"><h3>Search</h3><p>Search results plus optional full content. Use it when the URLs are unknown.</p></article><article class="info-card"><h3>Research</h3><p>Finds publications through a scholarly index and public GitHub sources. It is a research layer, not an LLM profile.</p></article><article class="info-card"><h3>Agent</h3><p>Receives a goal and uses web tools within defined limits. It needs a working LLM route.</p></article><article class="info-card"><h3>Extract / Summary</h3><p>An LLM maps content to fields or a shorter account. Verify critical facts against sources.</p></article></div><div class="callout warning"><strong>A provider profile and project policy are separate checks</strong><p>Even a READY provider is unavailable when the current project disallows cloud models or disables AI. The router selects only profiles permitted by that project.</p></div></section>
+
+          <section class="docs-section wide" id="automation"><div class="section-heading"><p class="eyebrow">Automation</p><h2>Background jobs, schedules, and event delivery</h2><p>Crawl, Batch Scrape, Extract, and Agent may run asynchronously. Jobs expose lifecycle and errors; monitors and webhooks turn a request into a repeatable workflow.</p></div><ul class="check-list"><li><strong>Jobs:</strong> status, cancellation, duration, result count, and Core error.</li><li><strong>Operations:</strong> project and key attribution without persisting full result bodies.</li><li><strong>Monitors:</strong> bounded recurring runs.</li><li><strong>Webhooks:</strong> signed delivery, retry policy, and attempt history.</li></ul></section>
+
+          <section class="docs-section wide" id="safety"><div class="section-heading"><p class="eyebrow">Before the first request</p><h2>Check permission and load</h2><p>Technical reachability is not permission for automated collection. Check purpose, site terms, robots policy, personal data, copyright, and the impact of request volume.</p></div><div class="policy-flow" aria-label="Pre-request checks"><div class="policy-step"><b>1 · URL</b><span>Public HTTP(S), no private networks or service addresses.</span></div><div class="policy-step"><b>2 · Right</b><span>Permission, a contractual basis, or an allowed public source.</span></div><div class="policy-step"><b>3 · Rules</b><span>Site terms and robots policy allow the selected path.</span></div><div class="policy-step"><b>4 · Scale</b><span>Depth, concurrency, and frequency are safe for the source.</span></div><div class="policy-step"><b>5 · Data</b><span>Store only what is needed and define retention.</span></div></div><p class="source-note">robots.txt is an instruction mechanism for automated clients, not an authorization system. Terms and applicable law remain separate constraints.</p></section>
+
+          <section class="docs-section wide" id="status"><div class="section-heading"><p class="eyebrow">Runtime</p><h2>How to read capability status</h2><p>Dashboard readiness covers the gateway, PostgreSQL, and Core reachability. LLM, browser, and research providers have separate readiness checks.</p></div><div class="table-wrap"><table><thead><tr><th>Signal</th><th>It proves</th><th>It does not prove</th></tr></thead><tbody><tr><td><strong>Dashboard ready</strong></td><td>The panel, operational PostgreSQL, and Core connection are available.</td><td>That a specific model, browser, or research provider is ready.</td></tr><tr><td><strong>LLM profile READY</strong></td><td>The profile passed its check and loaded a model catalog.</td><td>That the current project permits the profile.</td></tr><tr><td><strong>Job COMPLETED</strong></td><td>Core finished that background operation.</td><td>That every page returned useful content; inspect counts and errors.</td></tr></tbody></table></div><div class="card-actions"><a class="button primary" href="./beginners/">Learn through examples</a><a class="button" href="https://docs.firecrawl.dev/">Official Firecrawl docs</a></div></section>
+        </main>
       </div>
-    </footer>
+    </div>
+    <footer class="site-footer"><div class="shell"><p class="footer-note">Firecrawl Control Plane · public documentation</p><p class="footer-note">Updated October 23, 2026 · capabilities depend on self-hosted configuration</p></div></footer>
   </body>
 </html>

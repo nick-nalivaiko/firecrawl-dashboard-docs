@@ -3,92 +3,179 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Firecrawl Control Plane — защищённая панель и gateway для self-hosted Firecrawl." />
-    <title>Firecrawl Control Plane — документация проекта</title>
+    <meta name="description" content="Практическая документация Firecrawl Control Plane: сбор данных, поиск, AI, проекты, безопасность и эксплуатация." />
+    <title>Документация · Firecrawl Control Plane</title>
     <link rel="stylesheet" href="../styles.css" />
+    <script src="../docs.js" defer></script>
   </head>
   <body>
     <header class="site-header">
       <div class="shell">
-        <a class="brand" href="./" aria-label="Главная Firecrawl Control Plane">
-          <span class="brand-mark" aria-hidden="true">◆</span>
-          <span>Firecrawl Control Plane</span>
+        <a class="brand" href="./" aria-label="Документация Firecrawl Control Plane">
+          <span class="brand-mark" aria-hidden="true">◆</span><span>Firecrawl Control Plane</span>
         </a>
         <div class="header-actions">
+          <nav class="mode-switch" aria-label="Режим документации">
+            <a class="mode-link" aria-current="page" href="./">Для пользователей</a>
+            <a class="mode-link" href="./beginners/">Для начинающих</a>
+          </nav>
           <a class="language-link" href="../en/" lang="en">English</a>
         </div>
       </div>
     </header>
 
-    <main>
-      <section class="shell hero">
-        <div>
-          <p class="eyebrow">Self-hosted платформа сбора данных</p>
-          <h1>Firecrawl с панелью управления для реальных внутренних задач.</h1>
-          <p class="hero-copy">Защищённый Dashboard, API gateway с проектными ключами, учёт использования, операции и маршрутизация провайдеров вокруг отдельно версионируемого Firecrawl Core.</p>
-          <div class="hero-actions">
-            <a class="button primary" href="https://firecrawl.tapurl.net/">Открыть панель</a>
-            <a class="button" href="#capabilities">Посмотреть возможности</a>
-          </div>
-        </div>
-        <aside class="status-card" aria-label="Статус проекта">
-          <span class="status-pill">Активная разработка</span>
-          <dl>
-            <div><dt>Интерфейс</dt><dd>RU / EN</dd></div>
-            <div><dt>Доступ</dt><dd>Панель владельца</dd></div>
-            <div><dt>Модель API</dt><dd>Проекты и ключи</dd></div>
-            <div><dt>Upstream</dt><dd>Обновляемая база</dd></div>
-          </dl>
+    <div class="shell">
+      <button class="mobile-toc-button" type="button" data-toc-toggle aria-expanded="false" aria-controls="docs-toc">
+        Оглавление <span aria-hidden="true">⌄</span>
+      </button>
+      <div class="docs-layout">
+        <aside class="docs-sidebar" id="docs-toc" data-toc>
+          <p class="toc-kicker">Руководство</p>
+          <nav aria-label="Оглавление страницы">
+            <ul class="toc-list">
+              <li><a class="toc-link is-active" href="#overview">Обзор платформы</a></li>
+              <li><a class="toc-link" href="#projects">Проекты и ключи</a></li>
+              <li><a class="toc-link" href="#collection">Сбор данных</a></li>
+              <li><a class="toc-link" href="#search-ai">Поиск и AI</a></li>
+              <li><a class="toc-link" href="#automation">Автоматизация</a></li>
+              <li><a class="toc-link" href="#safety">Безопасная работа</a></li>
+              <li><a class="toc-link" href="#status">Состояние функций</a></li>
+            </ul>
+          </nav>
+          <p class="toc-kicker">Ссылки</p>
+          <nav aria-label="Дополнительные ссылки">
+            <ul class="toc-list">
+              <li><a class="toc-link" href="./beginners/">Объяснение без терминов</a></li>
+              <li><a class="toc-link" href="https://firecrawl.tapurl.net/">Открыть панель</a></li>
+              <li><a class="toc-link" href="https://docs.firecrawl.dev/">Upstream Firecrawl Docs</a></li>
+            </ul>
+          </nav>
         </aside>
-      </section>
 
-      <section class="shell section" id="capabilities">
-        <div class="section-heading">
-          <p class="eyebrow">Текущие возможности</p>
-          <h2>Единое место для сбора данных, автоматизации и AI-сценариев.</h2>
-          <p>Проект уже вышел за рамки экрана мониторинга: он управляет доступом, распределяет нагрузку между внутренними проектами и открывает возможности Firecrawl через управляемый gateway.</p>
-        </div>
-        <div class="grid">
-          <article class="card"><span class="card-index">01</span><h3>Проекты и API-ключи</h3><p>Отдельные ключи, лимиты, статистика и история изменений для каждого внутреннего сервиса.</p></article>
-          <article class="card"><span class="card-index">02</span><h3>Инструменты сбора</h3><p>Scrape, Batch Scrape, Crawl, структурированный Extract, разбор документов, поиск и карта сайта.</p></article>
-          <article class="card"><span class="card-index">03</span><h3>Длительные задачи</h3><p>Состояние фоновой работы, диагностика ошибок, просмотр результатов и доступная отмена.</p></article>
-          <article class="card"><span class="card-index">04</span><h3>Автоматизация</h3><p>Мониторы, расписания, подписанные вебхуки, политика повторов и история доставки.</p></article>
-          <article class="card"><span class="card-index">05</span><h3>Маршрутизация моделей</h3><p>Поиск и проверка моделей Ollama или OpenAI-compatible с управляемым локальным и облачным резервом.</p></article>
-          <article class="card"><span class="card-index">06</span><h3>Состояние системы</h3><p>Readiness, очереди, отчёты использования, журнал изменений, сроки хранения и observability.</p></article>
-        </div>
-      </section>
+        <main class="docs-main">
+          <section class="docs-hero" id="overview">
+            <div>
+              <p class="eyebrow">Практическое руководство</p>
+              <h1>Как устроена платформа и где искать нужную функцию.</h1>
+              <p class="hero-copy">Firecrawl превращает веб-страницы и документы в пригодные для программ и AI данные. Control Plane добавляет проекты, ключи, политики, операции и наблюдаемость вокруг отдельно версионируемого Firecrawl Core.</p>
+              <div class="hero-actions">
+                <a class="button primary" href="https://firecrawl.tapurl.net/">Открыть панель</a>
+                <a class="button" href="./beginners/">Начать с простого объяснения</a>
+              </div>
+            </div>
+            <aside class="hero-note">
+              <strong>Главное правило выбора</strong>
+              <p>Одна известная страница — Scrape. Список известных страниц — Batch Scrape. Целый раздел сайта — Crawl. Сначала найти страницы — Search или Map. Получить поля по схеме — Extract/JSON.</p>
+            </aside>
+          </section>
 
-      <section class="shell section">
-        <div class="architecture">
-          <p class="eyebrow">Архитектура</p>
-          <h2>Собственная платформа отделена от upstream.</h2>
-          <p>Авторизация, проекты, политики gateway, usage и операционные данные находятся в отдельном platform layer. Firecrawl Core остаётся самостоятельным компонентом с зафиксированной версией, а обновления исходного Dashboard проходят через воспроизводимые Git-ветки обновления.</p>
-          <div class="architecture-flow" aria-label="Путь запроса">
-            <div class="architecture-node"><strong>Dashboard</strong><span>Работа владельца, управление проектами, отчёты и конфигурация.</span></div>
-            <div class="architecture-node"><strong>Managed gateway</strong><span>Проектная авторизация, лимиты, политики, учёт и безопасная маршрутизация.</span></div>
-            <div class="architecture-node"><strong>Firecrawl Core</strong><span>Версионируемый движок сбора с отдельной проверкой готовности.</span></div>
-            <div class="architecture-node"><strong>Операционные данные</strong><span>Метаданные PostgreSQL и временные артефакты с явными сроками хранения.</span></div>
-          </div>
-        </div>
-      </section>
+          <section class="docs-section wide" id="projects">
+            <div class="section-heading">
+              <p class="eyebrow">Контур доступа</p>
+              <h2>Проекты и API-ключи</h2>
+              <p>Каждый вызывающий сервис получает отдельный проект и ключ. Так лимиты, ошибки, операции и расходы не смешиваются между внутренними системами.</p>
+            </div>
+            <div class="mental-model" aria-label="Путь запроса через платформу">
+              <div class="mental-step"><span>01</span><strong>Проект</strong><p>Определяет владельца нагрузки, лимиты и политику AI.</p></div>
+              <div class="mental-step"><span>02</span><strong>Gateway</strong><p>Проверяет ключ, маршрут и допустимость запроса.</p></div>
+              <div class="mental-step"><span>03</span><strong>Firecrawl Core</strong><p>Выполняет сбор, поиск или фоновую задачу.</p></div>
+              <div class="mental-step"><span>04</span><strong>Результат</strong><p>Возвращается вызывающему сервису; крупные тела не складируются в operational PostgreSQL.</p></div>
+            </div>
+            <div class="callout"><strong>Ключи остаются на сервере</strong><p>Не помещайте административный или upstream-ключ в frontend, browser storage, URL или публичные примеры. Для приложения используйте project-scoped gateway key.</p></div>
+          </section>
 
-      <section class="shell section">
-        <div class="status-strip">
-          <div>
-            <p class="eyebrow">Предварительная документация</p>
-            <h2>Публичная документация развивается вместе с продуктом.</h2>
-            <p>Первая страница описывает стабильные границы проекта. Примеры API, сценарии функций и архитектурные материалы будут добавляться после прохождения runtime-проверок соответствующих маршрутов.</p>
-          </div>
-          <a class="button primary" href="https://firecrawl.tapurl.net/">Посмотреть продукт</a>
-        </div>
-      </section>
-    </main>
+          <section class="docs-section wide" id="collection">
+            <div class="section-heading">
+              <p class="eyebrow">Сбор данных</p>
+              <h2>Один источник, набор URL или целый сайт</h2>
+              <p>Эти операции отличаются не «качеством», а исходной задачей и масштабом обхода.</p>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Инструмент</th><th>Когда использовать</th><th>Что возвращает</th><th>Что учитывать</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Scrape</strong>Одна страница</td><td>URL уже известен, нужен текущий контент.</td><td>Markdown, HTML, links, screenshot или JSON.</td><td>Динамический сайт может потребовать ожидание, действия или усиленный proxy.</td></tr>
+                  <tr><td><strong>Batch Scrape</strong>Набор страниц</td><td>Есть конечный список независимых URL.</td><td>Отдельный результат по каждому адресу.</td><td>Это фоновая задача; следите за статусом и частичными ошибками.</td></tr>
+                  <tr><td><strong>Crawl</strong>Раздел сайта</td><td>Нужно пройти по ссылкам от стартовой страницы.</td><td>Коллекцию очищенных страниц.</td><td>Всегда задавайте лимит, глубину и границы домена.</td></tr>
+                  <tr><td><strong>Map</strong>Карта URL</td><td>Нужно быстро понять структуру сайта до загрузки контента.</td><td>Список обнаруженных URL без полных тел страниц.</td><td>Хороший первый шаг перед выборочным Crawl.</td></tr>
+                  <tr><td><strong>Extract / JSON</strong>Структура</td><td>Нужны определённые поля, одинаковые для разных страниц.</td><td>JSON по заданной схеме.</td><td>Использует AI; важны модель, политика проекта и проверка схемы.</td></tr>
+                  <tr><td><strong>Parse</strong>Документ</td><td>Источник — PDF, DOCX, таблица или иной файл.</td><td>Текст или структурированное представление документа.</td><td>Файл передаётся Core и не должен содержать данные без прав на обработку.</td></tr>
+                  <tr><td><strong>Browser / Interact</strong>Сложный сценарий</td><td>Нужно выполнить действия в браузере до чтения страницы.</td><td>Результат интерактивной сессии, снимок или содержимое.</td><td>Требует отдельного browser provider и строгих лимитов.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
 
-    <footer class="site-footer">
-      <div class="shell">
-        <p class="footer-note">Firecrawl Control Plane · проект self-hosted инфраструктуры</p>
-        <p class="footer-note">Основано на Dashboard Lab · Firecrawl Core остаётся отдельным upstream-компонентом</p>
+          <section class="docs-section wide" id="search-ai">
+            <div class="section-heading">
+              <p class="eyebrow">Поиск и AI</p>
+              <h2>Обнаружение источников и работа с их смыслом</h2>
+              <p>Search отвечает на вопрос «где лежит информация» и при необходимости сразу получает содержимое найденных страниц. AI-функции затем приводят найденное к схеме, резюмируют или планируют многошаговую задачу.</p>
+            </div>
+            <div class="ai-grid">
+              <article class="info-card"><h3>Search</h3><p>Поисковая выдача плюс опциональное извлечение полного контента. Подходит, когда URL заранее неизвестны.</p></article>
+              <article class="info-card"><h3>Research</h3><p>Ищет публикации через научный индекс и публичные GitHub-источники. Это отдельный поисковый слой, а не LLM-профиль.</p></article>
+              <article class="info-card"><h3>Agent</h3><p>Получает цель, планирует шаги и использует веб-инструменты. Нужен рабочий LLM-маршрут и чётко ограниченная задача.</p></article>
+              <article class="info-card"><h3>Extract / Summary</h3><p>LLM превращает сырой контент в заданные поля или краткое изложение. Всегда проверяйте критичные факты по источникам.</p></article>
+            </div>
+            <div class="callout warning"><strong>Профиль провайдера и политика проекта — две разные проверки</strong><p>Даже профиль со статусом READY не используется, если проект запрещает облачные модели или отключает AI. Маршрутизатор выбирает только из профилей, разрешённых политикой конкретного проекта.</p></div>
+          </section>
+
+          <section class="docs-section wide" id="automation">
+            <div class="section-heading">
+              <p class="eyebrow">Автоматизация</p>
+              <h2>Длительные задачи, расписания и доставка событий</h2>
+              <p>Crawl, Batch Scrape, Extract и Agent могут выполняться асинхронно. Панель показывает жизненный цикл, а мониторы и вебхуки превращают единичный запрос в повторяемый процесс.</p>
+            </div>
+            <ul class="check-list">
+              <li><strong>Задачи:</strong> статус, доступная отмена, длительность, количество результатов и ошибка Core.</li>
+              <li><strong>Операции:</strong> привязка запроса к проекту и ключу без сохранения полного результата.</li>
+              <li><strong>Мониторы:</strong> повторный запуск по расписанию с ограниченной частотой.</li>
+              <li><strong>Вебхуки:</strong> подписанная доставка события в ваш сервис, повторы и история попыток.</li>
+            </ul>
+          </section>
+
+          <section class="docs-section wide" id="safety">
+            <div class="section-heading">
+              <p class="eyebrow">До первого запроса</p>
+              <h2>Проверка допустимости и нагрузки</h2>
+              <p>Техническая доступность страницы не означает разрешение на массовый сбор. Проверяйте назначение, условия сайта, robots.txt, персональные данные, авторские права и влияние частоты запросов.</p>
+            </div>
+            <div class="policy-flow" aria-label="Проверка запроса до выполнения">
+              <div class="policy-step"><b>1 · URL</b><span>Публичный HTTP(S), без приватной сети и служебных адресов.</span></div>
+              <div class="policy-step"><b>2 · Право</b><span>Есть разрешение, договорное основание или допустимый публичный источник.</span></div>
+              <div class="policy-step"><b>3 · Правила</b><span>Условия сайта и robots policy не запрещают выбранный путь.</span></div>
+              <div class="policy-step"><b>4 · Масштаб</b><span>Лимит, глубина, параллельность и частота безопасны для источника.</span></div>
+              <div class="policy-step"><b>5 · Данные</b><span>Вы храните только необходимое и знаете срок удаления.</span></div>
+            </div>
+            <p class="source-note">robots.txt — механизм указаний для автоматических клиентов, а не система авторизации. Отдельно учитывайте условия сервиса и применимое право.</p>
+          </section>
+
+          <section class="docs-section wide" id="status">
+            <div class="section-heading">
+              <p class="eyebrow">Runtime</p>
+              <h2>Как понимать статус функции</h2>
+              <p>Readiness Dashboard подтверждает gateway, PostgreSQL и доступность Core. LLM, browser provider и research provider проверяются отдельно; успешная общая readiness не гарантирует каждый зависимый маршрут.</p>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Сигнал</th><th>Что он доказывает</th><th>Чего не доказывает</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Dashboard ready</strong></td><td>Панель, operational PostgreSQL и связь с Core доступны.</td><td>Что конкретная модель, браузер или поисковый провайдер готов.</td></tr>
+                  <tr><td><strong>LLM profile READY</strong></td><td>Профиль прошёл проверку и каталог моделей загрузился.</td><td>Что политика текущего проекта разрешает этот профиль.</td></tr>
+                  <tr><td><strong>Job COMPLETED</strong></td><td>Core завершил конкретную фоновую операцию.</td><td>Что все страницы дали полезный результат; проверяйте счётчики и ошибки.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="card-actions">
+              <a class="button primary" href="./beginners/">Прочитать на примерах</a>
+              <a class="button" href="https://docs.firecrawl.dev/">Официальная документация Firecrawl</a>
+            </div>
+          </section>
+        </main>
       </div>
-    </footer>
+    </div>
+
+    <footer class="site-footer"><div class="shell"><p class="footer-note">Firecrawl Control Plane · публичная документация</p><p class="footer-note">Обновлено 23 октября 2026 · возможности зависят от конфигурации self-hosted среды</p></div></footer>
   </body>
 </html>

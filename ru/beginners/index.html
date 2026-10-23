@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Firecrawl для начинающих: функции, сравнение с Tavily, Serper и Exa, роль AI, реальные сценарии и запреты." />
+    <title>Firecrawl для начинающих · Firecrawl Control Plane</title>
+    <link rel="stylesheet" href="../../styles.css" />
+    <script src="../../docs.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="shell">
+        <a class="brand" href="../" aria-label="Документация Firecrawl Control Plane">
+          <span class="brand-mark" aria-hidden="true">◆</span><span>Firecrawl Control Plane</span>
+        </a>
+        <div class="header-actions">
+          <nav class="mode-switch" aria-label="Режим документации">
+            <a class="mode-link" href="../">Для пользователей</a>
+            <a class="mode-link" aria-current="page" href="./">Для начинающих</a>
+          </nav>
+          <a class="language-link" href="../../en/beginners/" lang="en">English</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="shell">
+      <button class="mobile-toc-button" type="button" data-toc-toggle aria-expanded="false" aria-controls="beginner-toc">Оглавление <span aria-hidden="true">⌄</span></button>
+      <div class="docs-layout">
+        <aside class="docs-sidebar" id="beginner-toc" data-toc>
+          <p class="toc-kicker">Для начинающих</p>
+          <nav aria-label="Оглавление страницы">
+            <ul class="toc-list">
+              <li><a class="toc-link is-active" href="#idea">Что такое Firecrawl</a></li>
+              <li><a class="toc-link" href="#functions">Функции и примеры</a></li>
+              <li><a class="toc-link" href="#comparison">Tavily, Serper и Exa</a></li>
+              <li><a class="toc-link" href="#ai">Как помогает AI</a></li>
+              <li><a class="toc-link" href="#power-cases">5 мощных сценариев</a></li>
+              <li><a class="toc-link" href="#poor-fit">Когда лучше не применять</a></li>
+              <li><a class="toc-link" href="#prohibited">Когда нельзя применять</a></li>
+              <li><a class="toc-link" href="#guardrails">Какие нужны запреты</a></li>
+              <li><a class="toc-link" href="#start">С чего начать</a></li>
+            </ul>
+          </nav>
+          <p class="toc-kicker">Другой режим</p>
+          <nav aria-label="Дополнительные ссылки"><ul class="toc-list"><li><a class="toc-link" href="../">Обычная документация</a></li><li><a class="toc-link" href="https://firecrawl.tapurl.net/">Открыть панель</a></li></ul></nav>
+        </aside>
+
+        <main class="docs-main">
+          <section class="docs-hero" id="idea">
+            <div>
+              <p class="eyebrow">Без предположения, что вы уже всё знаете</p>
+              <h1>Firecrawl — это конвейер превращения веба в данные.</h1>
+              <p class="hero-copy">Обычный поиск показывает ссылки. Firecrawl умеет найти источники, открыть их, убрать меню и рекламу, пройти по связанным страницам и вернуть результат в форме, которую понимает программа или AI.</p>
+              <div class="hero-actions"><a class="button primary" href="#functions">Разобрать функции</a><a class="button" href="../">Перейти в обычные доки</a></div>
+            </div>
+            <aside class="hero-note"><strong>Не «ещё один Google»</strong><p>Firecrawl полезен после обнаружения URL: он добывает сам материал и приводит разные сайты к одному формату. Search объединяет обнаружение и извлечение, но вся платформа шире поисковой выдачи.</p></aside>
+          </section>
+
+          <section class="docs-section wide">
+            <figure class="pipeline-figure">
+              <img src="../../assets/firecrawl-knowledge-pipeline.png" alt="Сайты и документы проходят через Firecrawl и превращаются в таблицы, графики, базу знаний и материал для AI" width="1792" height="1024" />
+              <figcaption>Слева — разрозненные сайты и файлы. В центре — сбор и очистка. Справа — сопоставимые данные, аналитика, база знаний и контекст для AI.</figcaption>
+            </figure>
+            <div class="mental-model" aria-label="Простая модель работы Firecrawl">
+              <div class="mental-step"><span>01</span><strong>Найти</strong><p>Search или Map обнаруживает подходящие адреса.</p></div>
+              <div class="mental-step"><span>02</span><strong>Получить</strong><p>Scrape, Batch или Crawl загружает содержание.</p></div>
+              <div class="mental-step"><span>03</span><strong>Привести к форме</strong><p>Markdown очищает текст, JSON раскладывает факты по полям.</p></div>
+              <div class="mental-step"><span>04</span><strong>Использовать</strong><p>Сравнивать, мониторить, искать изменения или давать AI.</p></div>
+            </div>
+          </section>
+
+          <section class="docs-section wide" id="functions">
+            <div class="section-heading"><p class="eyebrow">Функции на человеческом языке</p><h2>Что делает каждый инструмент</h2><p>Сначала выберите масштаб задачи. Ниже у каждой функции — три случая, когда она действительно уместна.</p></div>
+            <div class="function-list">
+              <article class="function-card"><div class="function-name"><small>1 URL</small><h3>Scrape</h3><p>Прочитать одну страницу</p></div><div class="function-body"><p>Вы даёте точный URL и получаете очищенный Markdown, HTML, ссылки, снимок экрана или JSON. Это базовая операция.</p><ul class="example-list"><li>Снять характеристики и цену с одной страницы продукта.</li><li>Передать AI чистый текст конкретной статьи без меню и баннеров.</li><li>Проверить, изменились ли условия тарифа на известной странице.</li></ul></div></article>
+              <article class="function-card"><div class="function-name"><small>СПИСОК URL</small><h3>Batch Scrape</h3><p>Прочитать несколько известных страниц</p></div><div class="function-body"><p>Работает как очередь Scrape для готового списка адресов. Удобно, когда страницы независимы и не нужно идти по ссылкам.</p><ul class="example-list"><li>Сравнить 30 страниц тарифов выбранных конкурентов.</li><li>Загрузить описания 100 заранее отобранных вакансий.</li><li>Обновить карточки конкретного списка поставщиков.</li></ul></div></article>
+              <article class="function-card"><div class="function-name"><small>САЙТ / РАЗДЕЛ</small><h3>Crawl</h3><p>Пройти по связанным страницам</p></div><div class="function-body"><p>Начинает с одной страницы, следует по ссылкам и собирает ограниченный участок сайта. Это способ получить корпус материалов, а не одну запись.</p><ul class="example-list"><li>Собрать документацию продукта для внутреннего помощника.</li><li>Проанализировать раздел блога конкурента за последний год.</li><li>Создать локальный архив справочного центра перед миграцией.</li></ul></div></article>
+              <article class="function-card"><div class="function-name"><small>ТОЛЬКО СТРУКТУРА</small><h3>Map</h3><p>Увидеть список страниц</p></div><div class="function-body"><p>Находит URL сайта без загрузки полного текста каждого документа. Помогает оценить размер и выбрать нужную часть.</p><ul class="example-list"><li>Найти все страницы документации с `/guides/` в адресе.</li><li>Понять, какие категории и посадочные страницы есть у конкурента.</li><li>Сформировать точный список для следующего Batch Scrape.</li></ul></div></article>
+              <article class="function-card"><div class="function-name"><small>НЕИЗВЕСТНЫЕ URL</small><h3>Search</h3><p>Найти источники и сразу получить контент</p></div><div class="function-body"><p>Возвращает поисковые результаты, а при заданных scrape options — ещё и полный очищенный материал каждой страницы. Это главное отличие от чистого SERP API.</p><ul class="example-list"><li>Найти свежие сравнения нескольких SaaS-продуктов и сразу прочитать их.</li><li>Собрать источники для статьи вместе с релевантными фрагментами.</li><li>Найти официальные страницы по узкой технической ошибке и передать AI их содержание.</li></ul></div></article>
+              <article class="function-card"><div class="function-name"><small>ЗАДАННЫЕ ПОЛЯ</small><h3>Extract / JSON</h3><p>Получить одинаковую схему из разных страниц</p></div><div class="function-body"><p>AI раскладывает содержание по вашей схеме: например, название, цена, страна, условия, контакты. Это сокращает ручной парсинг, но результат нужно валидировать.</p><ul class="example-list"><li>Получить таблицу тариф, лимит, пробный период из разных pricing pages.</li><li>Выделить автора, дату, тезисы и источники из публикаций.</li><li>Собрать из сайтов стран требования к визе по одной структуре.</li></ul></div></article>
+              <article class="function-card"><div class="function-name"><small>PDF / DOCX / XLSX</small><h3>Parse</h3><p>Прочитать документ</p></div><div class="function-body"><p>Извлекает содержание из файлов, когда источник не является обычной HTML-страницей.</p><ul class="example-list"><li>Разобрать публичный PDF-отчёт и подготовить текст для анализа.</li><li>Вытащить разделы из технического руководства поставщика.</li><li>Привести несколько документов тендера к единому поисковому корпусу.</li></ul></div></article>
+              <article class="function-card"><div class="function-name"><small>ДЕЙСТВИЯ В БРАУЗЕРЕ</small><h3>Browser / Interact</h3><p>Открыть динамический интерфейс</p></div><div class="function-body"><p>Используется, когда содержание появляется только после действий: нажатия, ожидания или прокрутки. Нужен отдельный browser provider.</p><ul class="example-list"><li>Раскрыть публичную таблицу, которая загружается по кнопке.</li><li>Снять состояние вашей собственной тестовой формы после сценария.</li><li>Получить публичный экран приложения после разрешённой навигации.</li></ul></div></article>
+              <article class="function-card"><div class="function-name"><small>МНОГОШАГОВАЯ ЦЕЛЬ</small><h3>Agent</h3><p>Спланировать исследование</p></div><div class="function-body"><p>AI сам выбирает последовательность веб-шагов в заданных пределах. Это полезно для открытой задачи, где заранее неизвестен полный список источников.</p><ul class="example-list"><li>Сравнить варианты решения проблемы и подготовить отчёт со ссылками.</li><li>Найти подтверждения тезиса в нескольких независимых источниках.</li><li>Собрать обзор рынка с явно заданными критериями и бюджетом запросов.</li></ul></div></article>
+            </div>
+          </section>
+
+          <section class="docs-section wide" id="comparison">
+            <div class="section-heading"><p class="eyebrow">Не одинаковые конкуренты</p><h2>Firecrawl, Tavily, Serper и Exa</h2><p>Выбор зависит от того, нужен ли вам список результатов, смысловой поиск, готовый ответ или полный контролируемый конвейер извлечения.</p></div>
+            <div class="table-wrap"><table><thead><tr><th>Сервис</th><th>Сильная сторона</th><th>Когда выбрать</th><th>Ограничение относительно задачи</th></tr></thead><tbody>
+              <tr><td><strong>Firecrawl</strong>Search + web extraction</td><td>Поиск, полный контент, Scrape, Crawl, Map, JSON и browser-процессы в одном API.</td><td>Вы строите собственный корпус данных, мониторинг или RAG и хотите единый формат после обнаружения.</td><td>Для одного лишь дешёвого списка позиций Google это избыточный конвейер.</td></tr>
+              <tr><td><strong>Tavily</strong>AI-oriented search</td><td>Поиск для агентов: релевантные chunks, фильтры, даты, домены, опциональный ответ и raw content.</td><td>Агенту нужен быстрый исследовательский поиск и короткий контекст без управления полноценным crawler.</td><td>Если нужно системно обойти раздел сайта и контролировать каждую страницу, Firecrawl ближе к задаче.</td></tr>
+              <tr><td><strong>Serper</strong>Google SERP API</td><td>Быстрая выдача Google: organic, news, images, maps, places, shopping, scholar и другое.</td><td>Нужны позиции, локальная выдача, сниппеты или типы Google-результатов.</td><td>SERP-ответ ещё не является очищенным полным содержимым найденных сайтов.</td></tr>
+              <tr><td><strong>Exa</strong>Semantic discovery</td><td>Семантический поиск, highlights, contents, entities и research/agent endpoints.</td><td>Нужно находить концептуально похожие документы, компании, исследования или страницы не по точному ключу.</td><td>Site-wide обход и точная воспроизводимая обработка собственных URL могут потребовать отдельного crawler.</td></tr>
+            </tbody></table></div>
+            <div class="decision-track" aria-label="Быстрый выбор сервиса">
+              <div class="decision-row"><strong>Нужна выдача Google</strong><span>Начните с Serper; Firecrawl подключайте, если затем нужны полные страницы.</span></div>
+              <div class="decision-row"><strong>Нужен агентный поиск</strong><span>Tavily удобен для компактного AI-контекста; Exa — для семантического discovery.</span></div>
+              <div class="decision-row"><strong>Нужен корпус сайта</strong><span>Firecrawl: Map → отбор URL → Crawl/Batch → Markdown или JSON.</span></div>
+              <div class="decision-row"><strong>Нужна глубокая система</strong><span>Сервисы можно сочетать: один обнаруживает, Firecrawl извлекает и нормализует.</span></div>
+            </div>
+            <div class="callout"><strong>Практическое различие</strong><p>Serper отвечает «что показал Google». Tavily и Exa помогают «какие источники релевантны для AI». Firecrawl отвечает ещё и «как забрать и привести содержимое этих источников к рабочему формату».</p></div>
+          </section>
+
+          <section class="docs-section wide" id="ai">
+            <div class="section-heading"><p class="eyebrow">AI не заменяет сборщик</p><h2>Как AI помогает внутри Firecrawl</h2><p>Firecrawl сначала даёт модели чистый, ограниченный материал. Затем модель выполняет смысловую работу. Это надёжнее, чем просить модель «вспомнить интернет» без источников.</p></div>
+            <div class="ai-grid">
+              <article class="info-card"><h3>Структурирование</h3><p>Extract и JSON превращают разные страницы в одну схему: цена, страна, лимит, контакт, аргумент. Код получает поля, а не хаотичный текст.</p></article>
+              <article class="info-card"><h3>Резюме и классификация</h3><p>Модель сокращает длинные документы, отмечает тему и раскладывает материалы по категориям. Важные факты остаются привязаны к исходной странице.</p></article>
+              <article class="info-card"><h3>Планирование</h3><p>Agent решает, какие запросы и страницы нужны для цели, а затем выполняет ограниченный набор шагов.</p></article>
+              <article class="info-card"><h3>Подготовка знаний</h3><p>Очищенный Markdown и метаданные становятся контекстом для RAG, редакционного помощника или внутреннего поиска.</p></article>
+            </div>
+            <div class="callout warning"><strong>Где в нашей панели участвует подключённая Ollama</strong><p>Профиль LLM нужен для Extract/JSON, Summary, Agent и AI-частей исследовательских сценариев. Обычный Scrape, Map и механическое извлечение Markdown не обязаны вызывать LLM. Профиль READY — только первая проверка; проект также должен разрешать облачную модель.</p></div>
+          </section>
+
+          <section class="docs-section wide" id="power-cases">
+            <div class="section-heading"><p class="eyebrow">Где появляется настоящий выигрыш</p><h2>5 мощных сценариев для ваших проектов</h2><p>Ценность возникает не от единичного Scrape, а когда сбор, структура, повторение и AI складываются в рабочий процесс.</p></div>
+            <div class="case-grid">
+              <article class="case-study"><header><span class="case-number">01</span><div><h3>Разведка перед созданием нового сайта или продукта</h3><p>Вы задаёте 15–30 конкурентов. Map находит pricing, features, cases, integrations и blog. Batch/Crawl собирает только эти разделы. Extract приводит всё к общей схеме: аудитория, оффер, доказательства, тарифы, ограничения, темы контента. AI строит карту незакрытых вопросов и повторяющихся обещаний.</p></div></header><div class="case-flow"><span>Карта конкурентов</span><span>Выборочный сбор</span><span>Единая сравнительная схема</span><span>Стратегический brief</span></div><p class="case-result"><strong>Что меняется:</strong> структура сайта, позиционирование и контент-план опираются на проверенный корпус страниц, а не на пять случайных вкладок и память модели. Это не копирование конкурентов: результатом должны стать различия, пробелы и собственная стратегия.</p></article>
+              <article class="case-study"><header><span class="case-number">02</span><div><h3>Живая база требований по странам, рынкам и программам</h3><p>Search обнаруживает официальные источники, Map находит нужные разделы, Scrape/Parse получает HTML и PDF, а Extract раскладывает требования по одинаковым полям. Монитор повторяет проверку и вебхук сообщает об изменении.</p></div></header><div class="case-flow"><span>Официальные источники</span><span>HTML + PDF</span><span>Поля и даты действия</span><span>Уведомление об изменении</span></div><p class="case-result"><strong>Что меняется:</strong> исследование стран перестаёт быть одноразовой таблицей. У каждого факта есть источник, дата проверки и понятный маршрут обновления; AI может объяснять различия, но не подменяет первичный документ.</p></article>
+              <article class="case-study"><header><span class="case-number">03</span><div><h3>Технический помощник по нескольким документациям</h3><p>Crawl собирает официальные docs выбранных продуктов, Parse добавляет PDF-руководства, а Markdown режется на фрагменты для внутреннего RAG. При вопросе помощник ищет только в проверенном корпусе и показывает ссылки.</p></div></header><div class="case-flow"><span>Allowlist документаций</span><span>Crawl с лимитами</span><span>Индекс знаний</span><span>Ответ с источниками</span></div><p class="case-result"><strong>Что меняется:</strong> разработчик не переключается между десятками сайтов, а ответ модели меньше зависит от устаревших общих знаний. Периодический Crawl обновляет корпус после релиза библиотек.</p></article>
+              <article class="case-study"><header><span class="case-number">04</span><div><h3>Радар нишевых заказов и возможностей</h3><p>Для разрешённых публичных площадок Search находит объявления, Batch Scrape получает детали, Extract выделяет бюджет, стек, срочность и риски, а AI ранжирует совпадение с реальным опытом. Монитор сообщает только о новых сильных совпадениях.</p></div></header><div class="case-flow"><span>Разрешённые источники</span><span>Нормализация вакансий</span><span>Проверяемые критерии</span><span>Очередь для человека</span></div><p class="case-result"><strong>Что меняется:</strong> человек читает десяток релевантных карточек вместо сотен. Отправка предложения, сообщения и денежные действия остаются ручными; Firecrawl помогает обнаружить и подготовить контекст.</p></article>
+              <article class="case-study"><header><span class="case-number">05</span><div><h3>Мониторинг продукта, поставщиков и инфраструктурных зависимостей</h3><p>Scrape и JSON фиксируют тарифы, статусы, changelog и документацию зависимостей. Монитор запускает проверку по расписанию, сравнение выделяет существенное изменение, вебхук создаёт сигнал для вашего рабочего процесса.</p></div></header><div class="case-flow"><span>Критичные страницы</span><span>Структурированный снимок</span><span>Сравнение версий</span><span>Сигнал с доказательством</span></div><p class="case-result"><strong>Что меняется:</strong> команда узнаёт об удалённом API, изменённой цене или новом требовании до инцидента. Полезный сигнал содержит старое и новое значение, URL и время проверки, а не просто «страница изменилась».</p></article>
+            </div>
+          </section>
+
+          <section class="docs-section wide" id="poor-fit">
+            <div class="section-heading"><p class="eyebrow">Технически можно, практически бессмысленно</p><h2>5 случаев, где Firecrawl лучше не применять</h2><p>Здесь нет безусловного запрета, но другой источник или инструмент даст более точный, дешёвый и устойчивый результат.</p></div>
+            <div class="boundary-grid">
+              <article class="boundary-card avoid"><h3>1. У сервиса есть официальный API</h3><p>Для платежей, CRM, погоды, биржевых котировок и административных данных используйте API: у него стабильная схема, авторизация и SLA. Scrape оставьте для публичной страницы, которой нет в API.</p></article>
+              <article class="boundary-card avoid"><h3>2. Нужны только позиции Google</h3><p>Если задача — SERP rank, maps или shopping results, Serper-подобный API проще. Firecrawl добавляйте только когда нужно читать сами результаты.</p></article>
+              <article class="boundary-card avoid"><h3>3. Данные уже ваши</h3><p>Не обходите собственную базу через веб-интерфейс. Читайте PostgreSQL, экспорт или внутренний API: это быстрее, полнее и не ломается от редизайна.</p></article>
+              <article class="boundary-card avoid"><h3>4. Нужен realtime за секунды</h3><p>Цены сделок, телеметрия и чат-события требуют streaming API или webhook. Периодический Crawl не гарантирует нужную задержку.</p></article>
+              <article class="boundary-card avoid"><h3>5. Нужно понять только одну страницу</h3><p>Для разового чтения человеком быстрее открыть страницу. Автоматизация оправдана, когда результат повторяется, масштабируется или становится входом другой системы.</p></article>
+            </div>
+          </section>
+
+          <section class="docs-section wide" id="prohibited">
+            <div class="section-heading"><p class="eyebrow">Стоп до запроса</p><h2>5 случаев, где запускать сбор нельзя</h2><p>Это консервативная продуктовая граница для нашей панели. Она снижает риск блокировки, утечки, вреда людям и нарушения правил источника. Для спорных коммерческих сценариев нужна отдельная правовая проверка.</p></div>
+            <div class="boundary-grid">
+              <article class="boundary-card stop"><h3>1. Авторизованная зона без явного разрешения</h3><p>Нельзя передавать чужие cookies, пароли, сессии или обходить paywall. Если данные ваши, используйте официальный экспорт или API с выданными правами.</p></article>
+              <article class="boundary-card stop"><h3>2. Instagram/Meta и другие платформы, запрещающие автоматический сбор</h3><p>Не запускайте Crawl публичных профилей «потому что страница открывается». У Meta есть отдельные условия automated data collection; Instagram запрещает автоматический доступ без явного разрешения. Используйте официальный API или письменное разрешение.</p></article>
+              <article class="boundary-card stop"><h3>3. Обход CAPTCHA, блокировок и access controls</h3><p>Запрет или защита источника — сигнал остановиться, а не усложнить маскировку. Нельзя использовать прокси для обхода явного запрета или технической защиты.</p></article>
+              <article class="boundary-card stop"><h3>4. Массовый сбор чувствительных персональных данных</h3><p>Не собирайте пароли, контакты, медицинские, финансовые, биометрические данные, личные сообщения или профили для слежения и дискриминации.</p></article>
+              <article class="boundary-card stop"><h3>5. Нагрузка, похожая на атаку</h3><p>Нельзя запускать неограниченный Crawl, высокий параллелизм или частые повторы, способные ухудшить работу чужого сайта. Масштаб должен быть заранее ограничен.</p></article>
+            </div>
+            <div class="callout danger"><strong>robots.txt недостаточно</strong><p>Разрешение в robots.txt не отменяет условия сервиса, авторские права, защиту персональных данных или договорные ограничения. И наоборот, robots.txt — важное машинно-читаемое указание владельца, которое crawler должен учитывать.</p></div>
+          </section>
+
+          <section class="docs-section wide" id="guardrails">
+            <div class="section-heading"><p class="eyebrow">Что стоит добавить в продукт</p><h2>Запреты до запуска, а не после блокировки</h2><p>Вы правы: одной статьи недостаточно. Панели нужен централизованный policy layer, который проверяет запрос до передачи в Firecrawl Core.</p></div>
+            <div class="policy-flow">
+              <div class="policy-step"><b>1 · Нормализация</b><span>Разобрать URL, IDN, redirect target и конечный IP.</span></div>
+              <div class="policy-step"><b>2 · Сеть</b><span>Запретить localhost, private ranges, metadata endpoints и внутренние имена.</span></div>
+              <div class="policy-step"><b>3 · Домены</b><span>Denylist платформ с явным запретом и project allowlist для чувствительных сценариев.</span></div>
+              <div class="policy-step"><b>4 · Правила</b><span>Проверить robots policy, лимиты, глубину, частоту и тип операции.</span></div>
+              <div class="policy-step"><b>5 · Объяснение</b><span>Остановить запрос до списания ресурсов и показать точную причину и безопасную альтернативу.</span></div>
+            </div>
+            <div class="callout"><strong>Предлагаемый следующий этап</strong><p>Реестр правил должен быть единым для UI и gateway: категории доменов, разрешённые операции, обязательный allowlist, лимиты и код причины отказа. Тогда запрет нельзя обойти прямым API-вызовом мимо формы.</p></div>
+          </section>
+
+          <section class="docs-section wide" id="start">
+            <div class="section-heading"><p class="eyebrow">Первый безопасный сценарий</p><h2>Начните с небольшого наблюдаемого запроса</h2><p>Не начинайте с «обойди весь интернет». Возьмите публичный URL, который вы имеете право обрабатывать, и расширяйте процесс только после проверки результата.</p></div>
+            <ul class="check-list">
+              <li>Scrape одной публичной страницы в Markdown.</li>
+              <li>Проверьте, что основной текст чистый, ссылки и метаданные верны.</li>
+              <li>Map того же домена с небольшим лимитом — только чтобы увидеть структуру.</li>
+              <li>Выберите 3–5 URL и выполните Batch Scrape вместо безграничного Crawl.</li>
+              <li>Только затем добавьте JSON-схему или AI-резюме и сравните с источником.</li>
+            </ul>
+            <div class="card-actions"><a class="button primary" href="https://firecrawl.tapurl.net/scrape">Открыть Scrape</a><a class="button" href="../">Обычная документация</a></div>
+
+            <h3 style="margin-top: 34px">Первоисточники</h3>
+            <ul class="source-list">
+              <li><a href="https://docs.firecrawl.dev/features/search">Firecrawl Search</a> — поиск и опциональное получение полного контента.</li>
+              <li><a href="https://docs.firecrawl.dev/developer-guides/common-sites/wikipedia">Firecrawl на примере Wikipedia</a> — различия Scrape, Map, Crawl, Search и Batch.</li>
+              <li><a href="https://docs.tavily.com/documentation/api-reference/endpoint/search">Tavily Search API</a> — параметры поиска, chunks, answer и raw content.</li>
+              <li><a href="https://exa.ai/docs/reference/search">Exa Search API</a> — semantic search, contents, highlights и entities.</li>
+              <li><a href="https://serper.dev/">Serper</a> — типы Google SERP-результатов.</li>
+              <li><a href="https://www.rfc-editor.org/rfc/rfc9309.html">RFC 9309</a> — стандарт Robots Exclusion Protocol.</li>
+              <li><a href="https://www.facebook.com/legal/automated_data_collection_terms">Meta Automated Data Collection Terms</a> и <a href="https://www.facebook.com/help/463983701520800">объяснение scraping от Meta</a>.</li>
+            </ul>
+            <p class="source-note">Сравнение отражает публичные возможности сервисов на 23 октября 2026 года. Тарифы, лимиты и отдельные endpoints могут меняться; перед интеграцией сверяйте официальные документы.</p>
+          </section>
+        </main>
+      </div>
+    </div>
+    <footer class="site-footer"><div class="shell"><p class="footer-note">Firecrawl Control Plane · руководство для начинающих</p><p class="footer-note">Техническая возможность не равна разрешению на сбор данных</p></div></footer>
+  </body>
+</html>
